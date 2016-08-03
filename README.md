@@ -18,30 +18,21 @@ This docker image is available as an automated build on [the docker registry hub
 $ docker run lren/flyway
 ```
 
-To further ease running, it's recommended to set up a much shorter function so that you can easily execute it as just `flyway`:
-
-```
-$ flyway () {
-  sudo docker run -it --rm --net host -v `pwd`:/flyway/sql lren/flyway $@
-}
-```
-
-This will create a temporary function. In order to make it persist reboots, you can append this exact line to your `~/.bashrc` (or similar) like this:
-
-```console
-$ declare -f flyway >> ~/.bashrc
-```
-
 ## Usage
 
-Go to the directory which has migration SQL files.
-
-```console
-$ cd src/main/resources/db/migration
+```
+$ docker run -i -t --rm -e FLYWAY_DBMS=postgres -e FLYWAY_HOST=`hostname` -v `pwd`/sql:/flyway/sql lren/flyway
 ```
 
-Then run `flyway` command.
+where the environment variables are:
 
-```console
-$ flyway -url=jdbc:mysql://127.0.0.1/mydb -user=root -password=mypass migrate
-```
+* FLYWAY_DBMS: [required] Type of the database (oracle, postgres...).
+* FLYWAY_HOST: [required] database host.
+* FLYWAY_PORT: database port.
+* FLYWAY_DATABASE_NAME: name of the database or schema
+* FLYWAY_URL: JDBC url to the database, constructed by default from FLYWAY_DBMS, FLYWAY_HOST, FLYWAY_PORT and FLYWAY_DATABASE_NAME
+* FLYWAY_DRIVER: Fully qualified classname of the jdbc driver (autodetected by default based on flyway.url)
+* FLYWAY_USER: database user.
+* FLYWAY_PASSWORD: database password.
+* FLYWAY_SCHEMAS: Comma-separated list of schemas managed by Flyway
+* FLYWAY_TABLE: Name of Flyway's metadata table (default: schema_version)
