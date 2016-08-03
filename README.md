@@ -1,6 +1,6 @@
 # docker-flyway
 
-Flyway is database migration tool.
+Flyway is a database migration tool.
 This is a docker image that eases setup.
 
 ## About Flyway
@@ -11,18 +11,18 @@ From: [Documentation - Flyway • Database Migrations Made Easy.](http://flywayd
 
 ## Install
 
-This docker image is available as an automated build on [the docker registry hub](https://registry.hub.docker.com/u/shouldbee/flyway/), so using it is as simple as running:
+This docker image is available as an automated build on [the docker registry hub](https://registry.hub.docker.com/u/lren/flyway/), so using it is as simple as running:
 
 
 ```console
-$ docker run shouldbee/flyway
+$ docker run lren/flyway
 ```
 
 To further ease running, it's recommended to set up a much shorter function so that you can easily execute it as just `flyway`:
 
 ```
 $ flyway () {
-  sudo docker run -it --rm --net host -v `pwd`:/flyway/sql shouldbee/flyway $@
+  sudo docker run -it --rm --net host -v `pwd`:/flyway/sql lren/flyway $@
 }
 ```
 
