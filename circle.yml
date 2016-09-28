@@ -7,7 +7,12 @@ machine:
 dependencies:
   override:
     - docker version
-    - docker build --rm=false -t lren/flyway:4.0.3 . 
+    - docker info
+    - docker build --rm=false -t lren/flyway:4.0.3 .
+
+tests:
+  override:
+    - docker run -i -t --rm lren/flyway:4.0.3 ""
 
 #deployment:
 #  hub:
@@ -15,4 +20,3 @@ dependencies:
 #    commands:
 #      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
 #      - docker push lren/xnat:1.6.5
-
