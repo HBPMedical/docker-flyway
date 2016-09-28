@@ -12,7 +12,7 @@ dependencies:
 
 test:
   override:
-    - docker run -i -t --rm lren/flyway:4.0.3 ""
+    - docker run -i -t lren/flyway:4.0.3 ""
 
 #deployment:
 #  hub:
