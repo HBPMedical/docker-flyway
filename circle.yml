@@ -10,7 +10,7 @@ dependencies:
     - docker info
     - docker build --rm=false -t lren/flyway:4.0.3 .
 
-tests:
+test:
   override:
     - docker run -i -t --rm lren/flyway:4.0.3 ""
 
