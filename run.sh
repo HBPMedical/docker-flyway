@@ -18,4 +18,4 @@ if [ ! -z "$@" ]; then
     fi
 fi
 
-exec dockerize $DOCKERIZE_OPTS $@
+exec dockerize $DOCKERIZE_OPTS flyway $@
