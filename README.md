@@ -23,7 +23,7 @@ $ docker run lren/flyway:4.1.2
 
 ## Usage
 
-```
+```console
 $ docker run -i -t --rm -e FLYWAY_DBMS=postgres -e FLYWAY_HOST=`hostname` -v `pwd`/sql:/flyway/sql lren/flyway:4.1.2 migrate
 ```
 
@@ -39,6 +39,14 @@ where the environment variables are:
 * FLYWAY_PASSWORD: database password.
 * FLYWAY_SCHEMAS: Comma-separated list of schemas managed by Flyway
 * FLYWAY_TABLE: Name of Flyway's metadata table (default: schema_version)
+
+## Build
+
+Run: `./build.sh`
+
+## Publish on Docker Hub
+
+Run: `./publish.sh`
 
 ## License
 

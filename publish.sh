@@ -81,7 +81,7 @@ git push --tags
 updated_version=$(bumpversion --dry-run --list patch | grep current_version | sed -r s,"^.*=",,)
 
 #  WARNING: Requires captain 1.1.0 to push user tags
-$CAPTAIN push flyway --branch-tags=false --commit-tags=false --tag $updated_version
+BUILD_DATE=$(date --iso-8601=seconds) $CAPTAIN push flyway --branch-tags=false --commit-tags=false --tag $updated_version
 sed "s/USER/${USER^}/" $WORKSPACE/slack.json > $WORKSPACE/.slack.json
 sed -i.bak "s/VERSION/$updated_version/" $WORKSPACE/.slack.json
 curl -k -X POST --data-urlencode payload@$WORKSPACE/.slack.json https://hbps1.chuv.ch/slack/dev-activity
