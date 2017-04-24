@@ -2,7 +2,7 @@ FROM java:8u92-jre-alpine
 
 RUN apk update && apk add bash wget
 
-ENV FLYWAY_VERSION=4.0.3 \
+ENV FLYWAY_VERSION=4.1.2 \
     DOCKERIZE_VERSION=v0.2.0
 
 RUN wget -O /tmp/dockerize.tar.gz https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz \
