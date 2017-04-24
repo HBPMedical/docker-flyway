@@ -69,6 +69,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
+Initial packaging done by suin <suinyeze@gmail.com>
+
 ### Flyway
 
 Copyright (C) 2016-2017 [Boxfuse GmbH](https://boxfuse.com)
