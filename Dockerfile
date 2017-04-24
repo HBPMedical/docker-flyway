@@ -1,4 +1,4 @@
-FROM java:8u92-jre-alpine
+FROM openjdk:8u121-jre-alpine
 
 RUN apk update && apk add bash wget
 

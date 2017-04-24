@@ -1,4 +1,4 @@
-woken:
+flyway:
   build: Dockerfile
   image: lren/flyway
   pre:
