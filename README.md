@@ -1,9 +1,10 @@
 # docker-flyway
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](https://github.com/LREN-CHUV/docker-flyway/blob/master/LICENSE) [![DockerHub](https://img.shields.io/badge/docker-lren%2Fflyway-008bb8.svg)](https://hub.docker.com/r/lren/flyway/) [![CircleCI](https://circleci.com/gh/LREN-CHUV/docker-flyway/tree/master.svg?style=svg)](https://circleci.com/gh/LREN-CHUV/docker-flyway/tree/master) [![ImageVersion](https://images.microbadger.com/badges/version/lren/flyway.svg)](https://hub.docker.com/r/lren/flyway/tags "lren/flyway image tags") [![ImageLayers](https://images.microbadger.com/badges/image/lren/flyway.svg)](https://microbadger.com/#/images/lren/flyway "lren/flyway on microbadger")
+[![CHUV](https://img.shields.io/badge/CHUV-LREN-AF4C64.svg)](https://www.unil.ch/lren/en/home.html)
 
 Flyway is a database migration tool.
-This is a docker image that eases setup.
+This is a docker image that eases setup and use of Flyway.
 
 ## About Flyway
 
@@ -17,13 +18,13 @@ This docker image is available as an automated build on [the docker registry hub
 
 
 ```console
-$ docker run lren/flyway
+$ docker run lren/flyway:4.0.3
 ```
 
 ## Usage
 
 ```
-$ docker run -i -t --rm -e FLYWAY_DBMS=postgres -e FLYWAY_HOST=`hostname` -v `pwd`/sql:/flyway/sql lren/flyway migrate
+$ docker run -i -t --rm -e FLYWAY_DBMS=postgres -e FLYWAY_HOST=`hostname` -v `pwd`/sql:/flyway/sql lren/flyway:4.0.3 migrate
 ```
 
 where the environment variables are:
@@ -38,3 +39,36 @@ where the environment variables are:
 * FLYWAY_PASSWORD: database password.
 * FLYWAY_SCHEMAS: Comma-separated list of schemas managed by Flyway
 * FLYWAY_TABLE: Name of Flyway's metadata table (default: schema_version)
+
+## License
+
+### Docker packaging
+
+(this project)
+
+Copyright (C) 2010-2017 [LREN CHUV](https://www.unil.ch/lren/en/home.html)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+### Flyway
+
+Copyright (C) 2016-2017 [Boxfuse GmbH](https://boxfuse.com)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+## Trademark
+Flyway is a registered trademark of [Boxfuse GmbH](https://boxfuse.com).

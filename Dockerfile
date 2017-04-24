@@ -15,8 +15,8 @@ RUN wget -O /tmp/flyway.zip http://repo1.maven.org/maven2/org/flywaydb/flyway-co
      && mv /flyway-${FLYWAY_VERSION} /flyway \
      && ln -s /flyway/flyway /usr/local/bin/flyway
 
-COPY flyway.conf.tmpl /flyway/conf/
-COPY run.sh /
+COPY docker/flyway.conf.tmpl /flyway/conf/
+COPY docker/run.sh /
 
 # A simple test
 RUN flyway 2>&1 | grep "Flyway ${FLYWAY_VERSION}"
