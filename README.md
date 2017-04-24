@@ -23,6 +23,7 @@ $ docker run lren/flyway:4.1.2
 
 ## Usage
 
+Run:
 ```console
 $ docker run -i -t --rm -e FLYWAY_DBMS=postgres -e FLYWAY_HOST=`hostname` -v `pwd`/sql:/flyway/sql lren/flyway:4.1.2 migrate
 ```
