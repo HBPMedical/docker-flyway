@@ -30,4 +30,5 @@ echo "Test database migration"
 $DOCKER_COMPOSE run flyway
 
 # Cleanup
-$DOCKER_COMPOSE rm -f > /dev/null
+echo
+$DOCKER_COMPOSE rm -f > /dev/null 2> /dev/null
