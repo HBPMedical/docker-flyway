@@ -24,7 +24,10 @@ fi
 
 $DOCKER_COMPOSE up -d test_db
 $DOCKER_COMPOSE run wait_dbs
+
+echo
+echo "Test database migration"
 $DOCKER_COMPOSE run flyway
 
 # Cleanup
-$DOCKER_COMPOSE rm -f
+$DOCKER_COMPOSE rm -f > /dev/null
