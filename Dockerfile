@@ -1,13 +1,13 @@
 FROM openjdk:8u121-jre-alpine
 MAINTAINER Ludovic Claude <ludovic.claude@laposte.net>
 
+ARG BUILD_DATE
+ARG VCS_REF
+
 RUN apk update && apk add bash wget
 
 ENV FLYWAY_VERSION=4.1.2 \
     DOCKERIZE_VERSION=v0.4.0
-
-ARG BUILD_DATE
-#ARG VCS_REF
 
 RUN wget -O /tmp/dockerize.tar.gz https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-alpine-linux-amd64-${DOCKERIZE_VERSION}.tar.gz \
     && tar -C /usr/local/bin -xzvf /tmp/dockerize.tar.gz \
@@ -38,7 +38,7 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
     org.label-schema.description="Flyway tool to manage database migrations" \
     org.label-schema.url="https://github.com/LREN-CHUV/docker-flyway" \
     org.label-schema.vcs-type="git" \
-    #org.label-schema.vcs-ref=$VCS_REF \
+    org.label-schema.vcs-ref=$VCS_REF \
     org.label-schema.vcs-url="https://github.com/LREN-CHUV/docker-flyway" \
     org.label-schema.vendor="CHUV LREN" \
     org.label-schema.docker.dockerfile="Dockerfile" \

@@ -36,6 +36,9 @@ fi
 select_part() {
   local choice=$1
   case "$choice" in
+      "Package release")
+          bumpversion package
+          ;;
       "Patch release")
           bumpversion patch
           ;;
@@ -62,7 +65,7 @@ git pull --tags
   echo
   echo 'What do you want to release?'
   PS3='Select the version increment> '
-  options=("Patch release" "Minor release" "Major release" "Release with a custom version")
+  options=("Package release" "Patch release" "Minor release" "Major release" "Release with a custom version")
   select choice in "${options[@]}";
   do
     select_part "$choice"
@@ -81,7 +84,7 @@ git push --tags
 updated_version=$(bumpversion --dry-run --list patch | grep current_version | sed -r s,"^.*=",,)
 
 #  WARNING: Requires captain 1.1.0 to push user tags
-BUILD_DATE=$(date --iso-8601=seconds) $CAPTAIN push flyway --branch-tags=false --commit-tags=false --tag $updated_version
+BUILD_DATE=$(date --iso-8601=seconds) VCS_REF=$updated_version $CAPTAIN push flyway --branch-tags=false --commit-tags=false --tag $updated_version
 sed "s/USER/${USER^}/" $WORKSPACE/slack.json > $WORKSPACE/.slack.json
 sed -i.bak "s/VERSION/$updated_version/" $WORKSPACE/.slack.json
 curl -k -X POST --data-urlencode payload@$WORKSPACE/.slack.json https://hbps1.chuv.ch/slack/dev-activity

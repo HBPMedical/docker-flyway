@@ -5,3 +5,5 @@ flyway:
     - echo "Preparing Flyway"
   post:
     - echo "Finished building Flyway"
+  test:
+    - ./tests/test.sh

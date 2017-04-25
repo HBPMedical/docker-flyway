@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+
+  test_db:
+    image: "postgres:9.6.2-alpine"
+    container_name: "test-db"
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=test
+
+  wait_dbs:
+    image: "waisbrot/wait"
+    links:
+      - "test_db:test_db"
+    environment:
+      - TARGETS=test_db:5432
+
+  # Use the latest image built as this is what is under test
+  flyway:
+    image: "lren/flyway:latest"
+    container_name: "flyway"
+    command: "migrate"
+    volumes:
+      - ./sql/:/flyway/sql
+    environment:
+      - FLYWAY_DBMS=postgresql
+      - FLYWAY_HOST=db
+      - FLYWAY_PORT=5432
+      - FLYWAY_DATABASE_NAME=test
+      - FLYWAY_USER=test
+      - FLYWAY_PASSWORD=test
+      - FLYWAY_SCHEMAS=public
+    links:
+     - "test_db:db"

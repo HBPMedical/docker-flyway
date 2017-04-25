@@ -18,14 +18,14 @@ This docker image is available as an automated build on [the docker registry hub
 
 
 ```console
-$ docker run lren/flyway:4.1.2
+$ docker run lren/flyway:4.1.2-0
 ```
 
 ## Usage
 
 Run:
 ```console
-$ docker run -i -t --rm -e FLYWAY_DBMS=postgres -e FLYWAY_HOST=`hostname` -v `pwd`/sql:/flyway/sql lren/flyway:4.1.2 migrate
+$ docker run -i -t --rm -e FLYWAY_DBMS=postgres -e FLYWAY_HOST=`hostname` -v `pwd`/sql:/flyway/sql lren/flyway:4.1.2-0 migrate
 ```
 
 where the environment variables are:
