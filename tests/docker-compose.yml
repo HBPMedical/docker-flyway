@@ -19,7 +19,7 @@ services:
 
   # Use the latest image built as this is what is under test
   flyway:
-    image: "lren/flyway:latest"
+    image: "hbpmip/flyway:latest"
     container_name: "flyway"
     command: "migrate"
     volumes:

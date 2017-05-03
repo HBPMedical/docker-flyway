@@ -1,6 +1,6 @@
 flyway:
   build: Dockerfile
-  image: lren/flyway
+  image: hbpmip/flyway
   pre:
     - echo "Preparing Flyway"
   post:

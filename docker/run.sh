@@ -5,7 +5,7 @@ DOCKERIZE_OPTS=""
 if [ ! -z "$@" ]; then
     if [ -z "$FLYWAY_HOST" ] || [ -z "$FLYWAY_DBMS" ]
     then
-        echo "usage: docker run lren/flyway with the following environment variables"
+        echo "usage: docker run hbpmip/flyway with the following environment variables"
         echo
         echo "FLYWAY_DBMS: [required] Type of the database (oracle, postgres...)."
         echo "FLYWAY_HOST: [required] database host."

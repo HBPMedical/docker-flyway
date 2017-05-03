@@ -1,4 +1,4 @@
-[![CHUV](https://img.shields.io/badge/CHUV-LREN-AF4C64.svg)](https://www.unil.ch/lren/en/home.html) [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](https://github.com/LREN-CHUV/docker-flyway/blob/master/LICENSE) [![DockerHub](https://img.shields.io/badge/docker-lren%2Fflyway-008bb8.svg)](https://hub.docker.com/r/lren/flyway/) [![CircleCI](https://circleci.com/gh/LREN-CHUV/docker-flyway/tree/master.svg?style=svg)](https://circleci.com/gh/LREN-CHUV/docker-flyway/tree/master) [![ImageVersion](https://images.microbadger.com/badges/version/lren/flyway.svg)](https://hub.docker.com/r/lren/flyway/tags "lren/flyway image tags") [![ImageLayers](https://images.microbadger.com/badges/image/lren/flyway.svg)](https://microbadger.com/#/images/lren/flyway "lren/flyway on microbadger")
+[![CHUV](https://img.shields.io/badge/CHUV-LREN-AF4C64.svg)](https://www.unil.ch/lren/en/home.html) [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](https://github.com/LREN-CHUV/docker-flyway/blob/master/LICENSE) [![DockerHub](https://img.shields.io/badge/docker-lren%2Fflyway-008bb8.svg)](https://hub.docker.com/r/hbpmip/flyway/) [![CircleCI](https://circleci.com/gh/LREN-CHUV/docker-flyway/tree/master.svg?style=svg)](https://circleci.com/gh/LREN-CHUV/docker-flyway/tree/master) [![ImageVersion](https://images.microbadger.com/badges/version/hbpmip/flyway.svg)](https://hub.docker.com/r/hbpmip/flyway/tags "hbpmip/flyway image tags") [![ImageLayers](https://images.microbadger.com/badges/image/hbpmip/flyway.svg)](https://microbadger.com/#/images/hbpmip/flyway "hbpmip/flyway on microbadger")
 
 
 # docker-flyway
@@ -14,18 +14,18 @@ From: [Documentation - Flyway • Database Migrations Made Easy.](http://flywayd
 
 ## Install
 
-This docker image is available as an automated build on [the docker registry hub](https://registry.hub.docker.com/u/lren/flyway/), so using it is as simple as running:
+This docker image is available as an automated build on [the docker registry hub](https://registry.hub.docker.com/u/hbpmip/flyway/), so using it is as simple as running:
 
 
 ```console
-$ docker run lren/flyway:4.1.2-1
+$ docker run hbpmip/flyway:4.1.2-1
 ```
 
 ## Usage
 
 Run:
 ```console
-$ docker run -i -t --rm -e FLYWAY_DBMS=postgres -e FLYWAY_HOST=`hostname` -v `pwd`/sql:/flyway/sql lren/flyway:4.1.2-1 migrate
+$ docker run -i -t --rm -e FLYWAY_DBMS=postgres -e FLYWAY_HOST=`hostname` -v `pwd`/sql:/flyway/sql hbpmip/flyway:4.1.2-1 migrate
 ```
 
 where the environment variables are:
