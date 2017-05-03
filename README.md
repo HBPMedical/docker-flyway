@@ -18,14 +18,14 @@ This docker image is available as an automated build on [the docker registry hub
 
 
 ```console
-$ docker run hbpmip/flyway:4.1.2-1
+$ docker run hbpmip/flyway:4.1.2-2
 ```
 
 ## Usage
 
 Run:
 ```console
-$ docker run -i -t --rm -e FLYWAY_DBMS=postgres -e FLYWAY_HOST=`hostname` -v `pwd`/sql:/flyway/sql hbpmip/flyway:4.1.2-1 migrate
+$ docker run -i -t --rm -e FLYWAY_DBMS=postgres -e FLYWAY_HOST=`hostname` -v `pwd`/sql:/flyway/sql hbpmip/flyway:4.1.2-2 migrate
 ```
 
 where the environment variables are:
