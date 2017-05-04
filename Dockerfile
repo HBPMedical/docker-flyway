@@ -1,5 +1,5 @@
 FROM openjdk:8u121-jre-alpine
-MAINTAINER Ludovic Claude <ludovic.claude@laposte.net>
+MAINTAINER Ludovic Claude <ludovic.claude@chuv.ch>
 
 ARG BUILD_DATE
 ARG VCS_REF
