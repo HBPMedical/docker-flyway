@@ -40,6 +40,12 @@ where the environment variables are:
 * FLYWAY_PASSWORD: database password.
 * FLYWAY_SCHEMAS: Comma-separated list of schemas managed by Flyway
 * FLYWAY_TABLE: Name of Flyway's metadata table (default: schema_version)
+* FLYWAY_MIGRATION_PACKAGE: additional Java package containing migration classes.
+
+In the container, the following directories have special meaning:
+
+* /flyway/sql: this directory should contain SQL migrations.
+* /flyway/jars: this directory should contain Java migrations packaged as jar files.
 
 ## Build
 
