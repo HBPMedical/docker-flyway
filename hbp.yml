@@ -1,2 +1,90 @@
+name: docker-flyway
+description: "Base Docker image for migrations using Flyway"
+
+long_description: |
+  Base Docker image for migrations using Flyway.
+
+authors:
+  - author: Ludovic Claude
+    author_email:
+      - ludovic.claude@chuv.ch
+      - ludovic.claude54@gmail.com
+      - ludovic.claude54@googlemail.com
+    organisation: LREN-CHUV
+    organisation_badge: https://img.shields.io/badge/CHUV-LREN-AF4C64.svg
+
+platform: MIP
+component:
+  mip_building_block: infrastructure
+  nature: docker-image
+
+license:
+  name: Apache 2.0
+  badge: https://img.shields.io/badge/license-Apache--2.0-blue.svg
+  url: https://github.com/LREN-CHUV/DOCKER-flyway/blob/master/LICENSE
+
+code_repositories:
+  - name: chuv-gitlab
+    visibility: private
+    url: https://___.chuv.ch/mip-infra/docker-flyway/
+    git_clone: https://___.chuv.ch/mip-infra/docker-flyway.git
+  - name: github/LREN-CHUV
+    visibility: public
+    url: https://github.io/LREN-CHUV/docker-flyway/
+    git_clone: https://github.io/LREN-CHUV/docker-flyway.git
+  - name: github/HBPMedical
+    visibility: public
+    url: https://github.io/HBPMedical/docker-flyway/
+    git_clone: https://github.io/HBPMedical/docker-flyway.git
+
+code_quality_checks:
+  codacy:
+    badge: https://api.codacy.com/project/badge/Grade/2d3708919dc9411fa37941a679780ff1
+    url: "https://www.codacy.com/app/hbp-mip/docker-flyway?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=LREN-CHUV/docker-flyway&amp;utm_campaign=Badge_Grade"
+
+testing:
+  unit_testing:
+    - sources: /tests
+    - command: /tests/tesh.sh
+
 release_management:
   current_version: 4.2.0-1
+  current_code_release: https://github.com/HBPMedical/docker-flyway/archive/4.2.0-1.zip
+  current_docker_release: docker pull hbpmip/flyway:4.2.0-1
+  release_script: 'publish.sh'
+
+continuous_integration:
+  - name: CircleCI
+    description: "Check style and execute unit tests"
+    url: https://circleci.com/gh/LREN-CHUV/docker-flyway
+    badge: https://circleci.com/gh/LREN-CHUV/docker-flyway.svg?style=svg
+    actions:
+      - code_style
+      - unit_tests
+
+distribution:
+  docker_hub:
+    name: hbpmip/flyway
+    current_tag: 4.2.0-1
+    url: https://hub.docker.com/r/hbpmip/flyway/
+    badge: https://img.shields.io/badge/docker-hbpmip%2Fflyway-008bb8.svg
+    command: docker pull hbpmip/flyway:4.2.0-1
+
+planning:
+  github:
+    name: Issues on Github
+    url: https://github.com/LREN-CHUV/docker-flyway/issues
+
+related_projects:
+  - name: woken-db-setup
+    mip_building_block: algorithm-factory
+    relationship: other-depends-on
+    relationship_scope: build
+  - name: meta-db-setup
+    mip_building_block: reference
+    relationship: other-depends-on
+    relationship_scope: build
+  - name: data-db-setup
+    mip_building_block: reference
+    relationship: other-depends-on
+    relationship_scope: build
