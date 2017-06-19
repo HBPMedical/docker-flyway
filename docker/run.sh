@@ -14,7 +14,7 @@ if [ ! -z "$@" ]; then
         echo "FLYWAY_PASSWORD: database password."
         exit 1
     else
-        DOCKERIZE_OPTS="-wait tcp://${FLYWAY_HOST}:${FLYWAY_PORT:-5432} -template /flyway/conf/flyway.conf.tmpl:/flyway/conf/flyway.conf"
+        DOCKERIZE_OPTS="-wait tcp://${FLYWAY_HOST}:${FLYWAY_PORT:-5432} -timeout 30s -template /flyway/conf/flyway.conf.tmpl:/flyway/conf/flyway.conf"
     fi
 fi
 
