@@ -30,6 +30,11 @@ WORKDIR /flyway
 VOLUME /flyway/jars
 VOLUME /flyway/sql
 
+
+# Force the use of standard DNS resolver, Go re-implementation causes sometimes problems within Docker
+# See https://golang.org/pkg/net/#hdr-Name_Resolution
+ENV GODEBUG=netdns=cgo
+
 ENTRYPOINT ["/run.sh"]
 CMD ["--help"]
 

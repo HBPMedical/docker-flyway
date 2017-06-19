@@ -18,8 +18,4 @@ if [ ! -z "$@" ]; then
     fi
 fi
 
-# Force the use of standard DNS resolver, Go re-implementation causes sometimes problems within Docker
-# See https://golang.org/pkg/net/#hdr-Name_Resolution
-export GODEBUG=netdns=cgo
-
 exec dockerize $DOCKERIZE_OPTS flyway $@
