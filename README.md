@@ -51,6 +51,10 @@ In the container, the following directories have special meaning:
 
 Run: `./build.sh`
 
+## Test
+
+Run: `./tests/test.sh`
+
 ## Publish on Docker Hub
 
 Run: `./publish.sh`
