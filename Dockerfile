@@ -6,7 +6,7 @@ ARG VCS_REF
 ARG VERSION
 
 ENV FLYWAY_VERSION=4.2.0 \
-    DOCKERIZE_VERSION=v0.4.0
+    DOCKERIZE_VERSION=v0.5.0
 
 RUN apk update && apk add bash wget \
     && wget -O /tmp/dockerize.tar.gz https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-alpine-linux-amd64-${DOCKERIZE_VERSION}.tar.gz \
