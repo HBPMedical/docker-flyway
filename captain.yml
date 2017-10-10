@@ -1,4 +1,4 @@
-flyway:
+target_image:
   build: Dockerfile
   image: hbpmip/flyway
   pre:
