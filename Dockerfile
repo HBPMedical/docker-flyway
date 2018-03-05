@@ -1,16 +1,13 @@
-FROM openjdk:8u131-jre-alpine
+FROM hbpmip/java-base:8u151-1
 MAINTAINER Ludovic Claude <ludovic.claude@chuv.ch>
 
 ARG BUILD_DATE
 ARG VCS_REF
 ARG VERSION
 
-ENV FLYWAY_VERSION=4.2.0 \
-    DOCKERIZE_VERSION=v0.5.0
+ENV FLYWAY_VERSION=4.2.0
 
-RUN apk update && apk add bash wget \
-    && wget -O /tmp/dockerize.tar.gz https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-alpine-linux-amd64-${DOCKERIZE_VERSION}.tar.gz \
-    && tar -C /usr/local/bin -xzvf /tmp/dockerize.tar.gz \
+RUN apk update && apk add --no-cache bash wget \
     && rm -rf /var/cache/apk/* /tmp/*
 
 RUN wget -O /tmp/flyway.zip https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/${FLYWAY_VERSION}/flyway-commandline-${FLYWAY_VERSION}.zip \
