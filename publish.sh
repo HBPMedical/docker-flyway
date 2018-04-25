@@ -11,7 +11,7 @@ fi
 
 if [ $NO_SUDO ]; then
   CAPTAIN="captain"
-elif groups $USER | grep &>/dev/null '\bdocker\b'; then
+elif groups "$USER" | grep &>/dev/null '\bdocker\b'; then
   CAPTAIN="captain"
 else
   CAPTAIN="sudo captain"
@@ -83,9 +83,6 @@ echo "Build the project for distribution..."
 ./tests/test.sh
 echo "[ok] Done"
 
-git push
-git push --tags
-
 get_script_dir () {
      SOURCE="${BASH_SOURCE[0]}"
 
@@ -107,6 +104,9 @@ BUILD_DATE=$(date -Iseconds) \
   VERSION=$updated_version \
   WORKSPACE=$WORKSPACE \
   $CAPTAIN push target_image --branch-tags=false --commit-tags=false --tag $updated_version
+
+git push
+git push --tags
 
 # Notify on slack
 sed "s/USER/${USER^}/" $WORKSPACE/slack.json > $WORKSPACE/.slack.json
