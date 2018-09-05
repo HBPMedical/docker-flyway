@@ -1,29 +1,31 @@
-FROM hbpmip/java-base:8u151-1
+FROM boxfuse/flyway:5.1.4-alpine
+
 MAINTAINER Ludovic Claude <ludovic.claude@chuv.ch>
 
 ARG BUILD_DATE
 ARG VCS_REF
 ARG VERSION
 
-ENV FLYWAY_VERSION=4.2.0
+ENV DOCKERIZE_VERSION=v0.6.1
 
-RUN apk update && apk add --no-cache bash wget \
+RUN apk add --no-cache --update ca-certificates wget shadow jq bash \
+    && update-ca-certificates \
+    && wget -O /tmp/dockerize.tar.gz "https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-alpine-linux-amd64-${DOCKERIZE_VERSION}.tar.gz" \
+    && tar -C /usr/local/bin -xzvf /tmp/dockerize.tar.gz \
+    && chown root:root /usr/local/bin/dockerize \
+    && apk del wget \
     && rm -rf /var/cache/apk/* /tmp/*
-
-RUN wget -O /tmp/flyway.zip https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/${FLYWAY_VERSION}/flyway-commandline-${FLYWAY_VERSION}.zip \
-     && unzip /tmp/flyway.zip \
-     && rm /tmp/flyway.zip \
-     && mv /flyway-${FLYWAY_VERSION} /flyway \
-     && ln -s /flyway/flyway /usr/local/bin/flyway
 
 COPY docker/flyway.conf.tmpl /flyway/conf/
 COPY docker/run.sh /
 
 # A simple test
-RUN flyway 2>&1 | grep "Flyway ${FLYWAY_VERSION}"
-
-ENV PATH /flyway:$PATH
-WORKDIR /flyway
+RUN flyway 2>&1 | grep "Flyway Community Edition ${FLYWAY_VERSION}"
+ENV PATH /flyway:$PATH \
+    FLYWAY_DBMS=postgresql \
+    FLYWAY_HOST=db \
+    FLYWAY_PORT=5432 \
+    FLYWAY_SCHEMAS=public
 VOLUME /flyway/jars
 VOLUME /flyway/sql
 
