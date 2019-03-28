@@ -1,9 +1,0 @@
-target_image:
-  build: Dockerfile
-  image: hbpmip/flyway
-  pre:
-    - echo "Preparing Flyway"
-  post:
-    - echo "Finished building Flyway"
-  test:
-    - ./tests/test.sh

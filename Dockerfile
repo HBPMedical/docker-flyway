@@ -1,10 +1,4 @@
-FROM boxfuse/flyway:5.1.4-alpine
-
-MAINTAINER Ludovic Claude <ludovic.claude@chuv.ch>
-
-ARG BUILD_DATE
-ARG VCS_REF
-ARG VERSION
+FROM boxfuse/flyway:5.2.4-alpine
 
 ENV DOCKERIZE_VERSION=v0.6.1
 
@@ -19,7 +13,7 @@ COPY docker/flyway.conf.tmpl /flyway/conf/
 COPY docker/run.sh /
 
 # A simple test
-RUN flyway 2>&1 | grep "Flyway Community Edition ${FLYWAY_VERSION}"
+RUN flyway -v 2>&1 | grep "Flyway Community Edition ${FLYWAY_VERSION}"
 ENV PATH /flyway:$PATH \
     FLYWAY_DBMS=postgresql \
     FLYWAY_HOST=db \
@@ -28,13 +22,16 @@ ENV PATH /flyway:$PATH \
 VOLUME /flyway/jars
 VOLUME /flyway/sql
 
-
 # Force the use of standard DNS resolver, Go re-implementation causes sometimes problems within Docker
 # See https://golang.org/pkg/net/#hdr-Name_Resolution
 ENV GODEBUG=netdns=cgo
 
 ENTRYPOINT ["/run.sh"]
 CMD ["--help"]
+
+ARG BUILD_DATE
+ARG VCS_REF
+ARG VERSION
 
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.name="hbpmip/flyway" \
